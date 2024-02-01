@@ -12,5 +12,13 @@ body {
     width: 100vw;
     display: flex;
     background: #ffffff;
-    flex-direction: column-reverse;
+    overflow: hidden;
+}
+
+main {
+    height: 88vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

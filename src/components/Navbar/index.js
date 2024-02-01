@@ -1,50 +1,35 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import "./index.css";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-    useEffect(() => {
-        const navBar = document.querySelector(".navbar")
-        const allLi = document.querySelectorAll("li");
-
-        allLi.forEach((li, index) => {
-            li.addEventListener("click", e => {
-                e.preventDefault();
-                navBar.querySelector(".active").classList.remove("active");
-                li.classList.add("active");
-
-                const indicator = document.querySelector(".indicator");
-                indicator.style.transform = `translateX(calc(${index * 25}vw))`;
-            });
-        });
-    }, []);
     return (
         <div className="navbar">
             <ul>
-                <li className="active">
-                    <a href="#">
-                        <i className='bx bx-home icon'></i>
+                <li>
+                    <NavLink to="/">
                         <i className='bx bxs-home activeIcon'></i>
-                    </a>
+                        <span className='nav-label'>Home</span>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="#">
-                        <i className='bx bx-user icon'></i>
-                        <i className='bx bxs-user activeIcon'></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i className='bx bx-folder icon'></i>
+                    <NavLink to="/work">
                         <i className='bx bxs-folder activeIcon'></i>
-                    </a>
+                        <span className='nav-label'>Work</span>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="#">
-                        <i className='bx bx-cog icon'></i>
-                        <i className='bx bxs-cog activeIcon'></i>
-                    </a>
+                    <NavLink to="/user">
+                        <i className='bx bxs-user activeIcon'></i>
+                        <span className='nav-label'>User</span>
+                    </NavLink>
                 </li>
-                <div className="indicator"></div>
+                <li>
+                    <NavLink to="/settings">
+                        <i className='bx bxs-cog activeIcon'></i>
+                        <span className='nav-label'>Settings</span>
+                    </NavLink>
+                </li>
             </ul>
         </div>
     )
