@@ -1,0 +1,52 @@
+.navbar {
+    position: relative;
+    height: 12vh;
+    width: 100%;
+    background: #7d2ae8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    justify-self: flex-end;
+}
+
+.navbar ul {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+.navbar ul li {
+    position: relative;
+    list-style-type: none;
+}
+
+.navbar ul li a {
+    position: relative;
+    height: 10vh;
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-decoration: none;
+    gap: 1em;
+}
+
+.navbar ul li a i {
+    position: relative;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.navbar ul li a span {
+    color: #ffffff;
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 840px) {
+    .nav-label {
+        display: none;
+    }
+}
