@@ -1,0 +1,8 @@
+.offers {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}

@@ -1,0 +1,171 @@
+.card {
+    width: 275px;
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 10px;
+    height: 22rem;
+}
+
+.card::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 10px;
+    bottom: 15px;
+    right: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg);
+    transition: all 0.1s ease-in;
+}
+
+.card::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 10px;
+    bottom: 15px;
+    left: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    transform: rotate(-5deg);
+    transition: all 0.1s ease-in;
+}
+
+.card:hover:before,
+.card:hover:after {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+.card:hover:before {
+    transform: rotate(-8deg);
+}
+
+.card:hover:after {
+    transform: rotate(8deg);
+}
+
+.card-img {
+    position: relative;
+    background: #FFFFFF;
+    background: linear-gradient(315deg, #68aeff, #0032a6);
+    width: 100%;
+    height: 75px;
+}
+
+.card-span {
+    cursor: pointer;
+    font-size: 11px;
+    position: absolute;
+    background-color: white;
+    top: 10px;
+    left: 10px;
+    padding: 3px 7px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in;
+    user-select: none;
+}
+
+.card-span:hover {
+    transform: translateX(5px);
+}
+
+.card-int {
+    padding: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-int-title {
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: system-ui, sans-serif;
+    margin-bottom: 10px;
+    height: 2.5em;
+    overflow: hidden;
+}
+
+.card-int-button {
+    cursor: pointer;
+    margin: 20px 0 0 0;
+    padding: 7px 20px;
+    width: 100%;
+    background-color: rgb(238, 246, 255);
+    border: none;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
+    transition: box-shadow 0.1s ease-in;
+    user-select: none;
+}
+
+.card-int-button:active {
+    box-shadow: 0px 0px 15px rgba(0, 119, 255, 0.5);
+}
+
+.card-int-button:hover::before {
+    animation: effect_two 0.4s 1;
+}
+
+.card-int-button::before {
+    content: 'More For This Offer';
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: rgb(0, 133, 255);
+    background: linear-gradient(146deg, #0032a6 0%, #68aeff 100%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(-99%);
+    z-index: 1;
+    animation: effect_one 10s infinite;
+}
+
+.card-int-button:hover::before {
+    transform: translateX(0%);
+}
+
+.excerpt {
+    margin-top: 5px;
+    font-size: .9rem;
+    height: 8.2em;
+    overflow: hidden;
+}
+
+@keyframes effect_one {
+    0% {
+        transform: translateX(-99%);
+    }
+
+    25% {
+        transform: translateX(-90%);
+    }
+
+    50% {
+        transform: translateX(-80%);
+    }
+
+    75% {
+        transform: translateX(-95%);
+    }
+
+    100% {
+        transform: translateX(-99%);
+    }
+}
+
+@keyframes effect_two {
+    to {
+        transform: translateX(-1%);
+    }
+
+    from {
+        transform: translateX(-99%);
+    }
+}

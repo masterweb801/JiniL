@@ -12,13 +12,11 @@ body {
     width: 100vw;
     display: flex;
     background: #ffffff;
-    overflow: hidden;
 }
 
 main {
     height: 88vh;
     width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
