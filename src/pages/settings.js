@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Settings = () => {
+const Settings = (props) => {
+    const logout = () => {
+        localStorage.clear();
+        props.stlog(false);
+    }
     return (
-        <div>Settings</div>
+        <div>
+            <button onClick={logout}>Logout</button>
+        </div>
     )
 }
 

@@ -13,8 +13,10 @@ function App() {
 
 
   useEffect(() => {
-    setlog(true);
-  }, [])
+    if (localStorage.getItem("tokenflg") !== null) {
+      setlog(true);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
@@ -32,7 +34,7 @@ function App() {
             <Navbar />
           </header>
         </> :
-        <Login />
+        <Login stlog={setlog} log={log} />
       }
     </BrowserRouter>
   );
