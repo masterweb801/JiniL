@@ -11,14 +11,14 @@ const Offer = (props) => {
         <div className="card">
             <div className="card-corner"></div>
             <div className="card-img">
-                <span className="card-span">{props.cat}</span>
+                <span className="card-span">{props.item[1]}</span>
             </div>
             <div className="card-int">
-                <div className="card-int-title">{props.title}</div>
-                <div className="excerpt">{props.desc}</div>
+                <div className="card-int-title">{props.item[2]}</div>
+                <div className="excerpt">{props.item[3]}</div>
                 <button className="card-int-button" onClick={showMore}>Read More</button>
             </div>
-            {show === false ? "" : <Navigate to={`/offer/${props.id}`} />}
+            {show === false ? "" : <Navigate to={`/offer/${props.item[0]}`} />}
         </div>
     )
 }

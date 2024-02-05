@@ -11,7 +11,6 @@ import Login from './pages/login';
 function App() {
   const [log, setlog] = useState(false);
 
-
   useEffect(() => {
     if (localStorage.getItem("tokenflg") !== null) {
       setlog(true);
@@ -24,7 +23,7 @@ function App() {
         <>
           <main>
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home stlog={setlog} />} />
               <Route exact path="/work" element={<Work />} />
               <Route exact path="/user" element={<User />} />
               <Route exact path="/settings" element={<Settings stlog={setlog} />} />
