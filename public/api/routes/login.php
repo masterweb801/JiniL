@@ -10,7 +10,7 @@ if ($data !== null) {
     $email = $data->email;
     $password = $data->password;
 
-    $sql = 'SELECT `ec`, `password` FROM `employee` WHERE `email`="' . $email . '"';
+    $sql = 'SELECT `ec`, `password` FROM `Employee` WHERE `email`="' . $email . '"';
     $data = mysqli_query($conn, $sql);
     $total = mysqli_num_rows($data);
     if ($total > 0) {

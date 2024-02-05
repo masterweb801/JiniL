@@ -7,6 +7,7 @@ const Home = (props) => {
     const authtoken = localStorage.getItem("tokenflg");
 
     const fetchPosts = useCallback(async () => {
+        // const url = "http://jinil.rf.gd/api/routes/fetchWishes.php";
         const url = "http://localhost/api/routes/fetchWishes.php";
         try {
             const response = await fetch(url, {

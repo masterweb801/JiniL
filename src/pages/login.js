@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate } from "react-router-dom";
 import "./css/login.css";
 import "./css/util.css";
@@ -10,6 +10,7 @@ const Login = (props) => {
 
     async function handleLoginClick(event) {
         event.preventDefault();
+        // const url = "http://jinil.rf.gd/api/routes/login.php";
         const url = "http://localhost/api/routes/login.php";
         try {
             const response = await fetch(url, {
@@ -33,6 +34,10 @@ const Login = (props) => {
             console.log(error);
         }
     }
+
+    useEffect(() => {
+        document.title = "JiniL | Login";
+    }, [])
 
     return (
         <div className="container-login100">

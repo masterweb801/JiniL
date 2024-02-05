@@ -10,13 +10,13 @@ if ($data !== null) {
     $auth = $data->authtoken;
     $ec = Token::Verify($auth, "JENDE");
     if ($ec !== false) {
-        $sql = 'SELECT `category` FROM `employee` WHERE `ec`="' . $ec . '"';
+        $sql = 'SELECT `category` FROM `Employee` WHERE `ec`="' . $ec . '"';
         $data = mysqli_query($conn, $sql);
         $total = mysqli_num_rows($data);
         if ($total > 0) {
             $result = mysqli_fetch_assoc($data);
             if ($result['category'] == "*") {
-                $sql2 = 'SELECT `id`, `category`, `title`, `details` FROM `orders`';
+                $sql2 = 'SELECT `id`, `category`, `title`, `details` FROM `Orders` WHERE `status`="open"';
                 $data2 = mysqli_query($conn, $sql2);
                 $total2 = mysqli_num_rows($data2);
                 if ($total2 > 0) {
@@ -26,7 +26,7 @@ if ($data !== null) {
                     response(200, "Successfull", []);
                 }
             } else {
-                $sql2 = 'SELECT `id`, `category`, `title`, `details` FROM `orders` WHERE `category`="' . $result['category'] . '"';
+                $sql2 = 'SELECT `id`, `category`, `title`, `details` FROM `Orders` WHERE `status`="open" AND `category`="' . $result['category'] . '"';
                 $data2 = mysqli_query($conn, $sql2);
                 $total2 = mysqli_num_rows($data2);
                 if ($total2 > 0) {
