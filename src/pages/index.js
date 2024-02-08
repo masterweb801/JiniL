@@ -8,7 +8,7 @@ const Home = (props) => {
 
     const fetchPosts = useCallback(async () => {
         // const url = "https://jinil.rf.gd/api/routes/fetchWishes.php";
-        const url = "https://localhost/api/routes/fetchWishes.php";
+        const url = "http://localhost/api/routes/fetchWishes.php";
         // try {
         const response = await fetch(url, {
             method: "POST",

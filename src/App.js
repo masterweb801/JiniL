@@ -7,6 +7,7 @@ import Work from "./pages/work";
 import User from "./pages/user";
 import Settings from "./pages/settings";
 import Login from './pages/login';
+import Wish from './pages/wish';
 
 function App() {
   const [log, setlog] = useState(false);
@@ -27,6 +28,7 @@ function App() {
               <Route exact path="/work" element={<Work />} />
               <Route exact path="/user" element={<User />} />
               <Route exact path="/settings" element={<Settings stlog={setlog} />} />
+              <Route path="/offer/:id" element={<Wish />} />
             </Routes>
           </main>
           <header>

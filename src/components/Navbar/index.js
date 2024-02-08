@@ -5,14 +5,14 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     useEffect(() => {
         const navBar = document.querySelector(".navbar")
-        const allLi = document.querySelectorAll("li");
+        const allLi = navBar.querySelectorAll("li");
 
         allLi.forEach((li, index) => {
             li.addEventListener("click", () => {
                 navBar.querySelector(".active").classList.remove("active");
                 li.classList.add("active");
 
-                const indicator = document.querySelector(".indicator");
+                const indicator = navBar.querySelector(".indicator");
                 indicator.style.left = `${(index * 25) + 12.5}vw`;
             });
         });
