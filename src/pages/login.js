@@ -10,8 +10,8 @@ const Login = (props) => {
 
     async function handleLoginClick(event) {
         event.preventDefault();
-        // const url = "http://jinil.rf.gd/api/routes/login.php";
-        const url = "http://localhost/api/routes/login.php";
+        // const url = "https://jinil.rf.gd/api/routes/login.php";
+        const url = "https://localhost/api/routes/login.php";
         try {
             const response = await fetch(url, {
                 method: "POST",
