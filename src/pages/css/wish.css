@@ -1,5 +1,5 @@
 .container {
-    background-color: rgb(243, 243, 243);
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
     width: 100vw;
     height: auto;
     min-height: 88vh;
@@ -11,17 +11,19 @@
 }
 
 .container h1 {
+    color: #fff;
     padding-bottom: 25px;
 }
 
 .container .main {
     height: auto;
-    min-height: 85vh;
+    min-height: 50vh;
     width: 90vw;
     padding: 35px 25px;
     background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: row-reverse;
+    border-radius: 50px 0;
 }
 
 .container .main .extra {
@@ -76,10 +78,10 @@
     /* border thickness */
     --s: .45em;
     /* size of the corner */
-    --color: #7d2ae8;
+    --color: #a8eb12;
 
     padding: calc(.5em + var(--s)) calc(.9em + var(--s));
-    color: #000;
+    color: #fff;
     --_p: var(--s);
     background:
         conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
@@ -100,7 +102,7 @@
     --_p: 0px;
     outline-color: var(--color);
     outline-offset: .05em;
-    background-color: rgb(0, 255, 242);
+    background-color: #00bf72;
 }
 
 .button-89:active {
