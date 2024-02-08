@@ -9,27 +9,27 @@ const Home = (props) => {
     const fetchPosts = useCallback(async () => {
         // const url = "https://jinil.rf.gd/api/routes/fetchWishes.php";
         const url = "https://localhost/api/routes/fetchWishes.php";
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ authtoken })
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-                rwishes.reverse();
-                setwishes(rwishes);
-            } else {
-                alert("Something Went Wrong!");
-            }
-
-        } catch (error) {
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ authtoken })
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
+            rwishes.reverse();
+            setwishes(rwishes);
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
         }
+
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
     }, [authtoken])
 
     useEffect(() => {
