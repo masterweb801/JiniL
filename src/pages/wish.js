@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import "./css/wish.css"
 
 const Wish = () => {
     let { id } = useParams();
     const [details, setdetails] = useState([]);
+    const [work, setwork] = useState(false);
 
     const getDetails = useCallback(async () => {
+        // const url = "https://jinil.rf.gd/api/routes/getDetails.php";
         const url = "http://localhost/api/routes/getDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         try {
@@ -14,8 +16,9 @@ const Wish = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "auth-token": authtoken
                 },
-                body: JSON.stringify({ authtoken, id })
+                body: JSON.stringify({ id })
             });
             const json = await response.json();
             if (json["response_code"] === 200) {
@@ -23,8 +26,8 @@ const Wish = () => {
                 setdetails(rwishes);
             } else {
                 alert("Something Went Wrong!");
+                console.log(json['response_desc']);
             }
-
         } catch (error) {
             alert("Something Went Wrong!");
             console.log(error);
@@ -32,13 +35,39 @@ const Wish = () => {
 
     }, [id])
 
+    async function startWork() {
+        // const url = "https://jinil.rf.gd/api/routes/startWork.php";
+        const url = "http://localhost/api/routes/startWork.php";
+        const authtoken = localStorage.getItem("tokenflg");
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                },
+                body: JSON.stringify({ id })
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                setwork(rwishes);
+            } else {
+                alert("Something Went Wrong!");
+            }
+        } catch (error) {
+            alert("Something Went Wrong!");
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         document.title = `Wish No. ${id}`;
         getDetails();
     }, [id, getDetails]);
     return (
         <div className='container'>
-
+            {work === true ? <Navigate to="/work" /> : ""}
             <h1>{details['title']}</h1>
 
             <div className='main'>
@@ -88,7 +117,7 @@ const Wish = () => {
                     </p>
                 </div>
             </div>
-            <button className='button-89'>Start Working</button>
+            <button className='button-89' onClick={startWork}>Start Working</button>
         </div>
     )
 }

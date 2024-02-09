@@ -2,8 +2,9 @@ import React, { useEffect, useState, useCallback } from 'react'
 import Offer from '../components/Offer'
 import "./css/index.css"
 
-const Home = (props) => {
+const Home = () => {
     const [wishes, setwishes] = useState([]);
+    const [ws, setws] = useState(false);
     const authtoken = localStorage.getItem("tokenflg");
 
     const fetchPosts = useCallback(async () => {
@@ -14,16 +15,22 @@ const Home = (props) => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ authtoken })
+                    "auth-token": authtoken
+                }
             });
             const json = await response.json();
             if (json["response_code"] === 200) {
                 let rwishes = json["response_data"];
                 rwishes.reverse();
-                setwishes(rwishes);
+                if (rwishes.length > 0) {
+                    setwishes(rwishes);
+                    setws(true);
+                } else {
+                    setws(false);
+                }
             } else {
                 alert("Something Went Wrong!");
+                console.log(json['response_desc']);
             }
 
         } catch (error) {
@@ -39,12 +46,16 @@ const Home = (props) => {
 
     return (
         <div className='index-main'>
-
-            <div className='offers'>
-                {wishes.map((item, index) => {
-                    return <Offer key={index} item={item} token={authtoken} />
-                })}
-            </div>
+            {ws === true ?
+                <div className='offers'>
+                    {wishes.map((item, index) => {
+                        return <Offer key={index} item={item} token={authtoken} />
+                    })}
+                </div> :
+                <div className='index-error'>
+                    No Wishes Availabe OR You Are already Working On Something!
+                </div>
+            }
         </div>
     )
 }
