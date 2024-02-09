@@ -2,15 +2,15 @@
 require "../functions/header.php";
 require "../functions/response.php";
 
-$json = file_get_contents('php://input');
-$data = json_decode($json);
-if ($data !== null) {
+if (isset($_SERVER['HTTP_AUTH_TOKEN'])) {
     require('../_config.php');
     require('../functions/jende.php');
-    $auth = $data->authtoken;
+
+    $auth = $_SERVER['HTTP_AUTH_TOKEN'];
     $ec = Token::Verify($auth, "JENDE");
+
     if ($ec !== false) {
-        $sql = 'SELECT `category` FROM `Employee` WHERE `ec`="' . $ec . '"';
+        $sql = 'SELECT `category` FROM `Employee` WHERE `status`="free" AND `ec`="' . $ec . '"';
         $data = mysqli_query($conn, $sql);
         $total = mysqli_num_rows($data);
         if ($total > 0) {
@@ -37,13 +37,12 @@ if ($data !== null) {
                 }
             }
         } else {
-            response(400, "Invalid User", null);
+            response(200, "Successfull", []);
         }
 
     } else {
         response(400, "Invalid User", null);
     }
-
 } else {
-    response(400, "Bad Request", null);
+    response(400, "Invalid User", null);
 }

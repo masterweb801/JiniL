@@ -17,16 +17,24 @@ if (isset($_SERVER['HTTP_AUTH_TOKEN'])) {
 
             $id = $data->id;
 
-            $sql = 'SELECT * FROM `Orders` WHERE `id`=' . $id;
+            $sql = 'SELECT `category` FROM `Employee` WHERE `ec`="' . $ec . '"';
             $data = mysqli_query($conn, $sql);
             $total = mysqli_num_rows($data);
+
             if ($total > 0) {
                 $result = mysqli_fetch_assoc($data);
-                response(200, "Successful", $result);
+                $sql2 = 'UPDATE `Orders` SET `status`="started" WHERE `id`=' . $id;
+                mysqli_query($conn, $sql2);
+                $sql3 = 'UPDATE `Employee` SET `nop`=`nop`+1, `status`="busy", `pid`=' . $id . ' WHERE `ec`="' . $ec . '"';
+                mysqli_query($conn, $sql3);
+                response(200, "Successful", true);
             } else {
-                response(400, "Something Went Wrong!", null);
+                response(400, "Invalid User", null);
             }
+        } else {
+            response(400, "Invalid User", null);
         }
+
     } else {
         response(400, "Invalid User", null);
     }
