@@ -8,57 +8,58 @@ const Wish = () => {
     const [work, setwork] = useState(false);
 
     const getDetails = useCallback(async () => {
-        // const url = "https://jinil.rf.gd/api/routes/getDetails.php";
-        const url = "http://localhost/api/routes/getDetails.php";
+        const url = "https://jinil.rf.gd/api/routes/getDetails.php";
+        // const url = "http://localhost/api/routes/getDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": authtoken
-                },
-                body: JSON.stringify({ id })
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-                setdetails(rwishes);
-            } else {
-                alert("Something Went Wrong!");
-                console.log(json['response_desc']);
-            }
-        } catch (error) {
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken
+            },
+            body: JSON.stringify({ id })
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
+            setdetails(rwishes);
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
+            console.log(json['response_desc']);
         }
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
 
     }, [id])
 
     async function startWork() {
-        // const url = "https://jinil.rf.gd/api/routes/startWork.php";
-        const url = "http://localhost/api/routes/startWork.php";
+        const url = "https://jinil.rf.gd/api/routes/startWork.php";
+        // const url = "http://localhost/api/routes/startWork.php";
         const authtoken = localStorage.getItem("tokenflg");
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": authtoken
-                },
-                body: JSON.stringify({ id })
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-                setwork(rwishes);
-            } else {
-                alert("Something Went Wrong!");
-            }
-        } catch (error) {
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken
+            },
+            body: JSON.stringify({ id })
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
+            setwork(rwishes);
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
+            console.log(json["response_desc"]);
         }
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
     }
 
     useEffect(() => {

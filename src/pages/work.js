@@ -4,124 +4,120 @@ import "./css/work.css"
 const Work = () => {
     const [working, setworking] = useState(false);
     const [wrkd, setwrkd] = useState([]);
-    const [state, setState] = useState(30);
+    const [state, setState] = useState(15);
 
     async function getWork() {
         const authtoken = localStorage.getItem("tokenflg");
-        // const url = "https://jinil.rf.gd/api/routes/getWork.php";
-        const url = "http://localhost/api/routes/getWork.php";
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": authtoken
-                }
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-
-                if (rwishes) {
-                    setwrkd(rwishes);
-                    setworking(true);
-                } else {
-                    setworking(false);
-                }
-            } else {
-                alert("Something Went Wrong!");
-                console.log(json['response_desc']);
+        const url = "https://jinil.rf.gd/api/routes/getWork.php";
+        // const url = "http://localhost/api/routes/getWork.php";
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken
             }
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
 
-        } catch (error) {
+            if (rwishes['stc']) {
+                setworking(true);
+                setwrkd(rwishes);
+                setTimeout(() => {
+                    document.getElementById("prog-bar").style.width = `${rwishes['stc']}%`;
+                }, 1000)
+            } else {
+                setworking(false);
+            }
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
+            console.log(json['response_desc']);
         }
+
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
     }
 
     async function Update() {
         const authtoken = localStorage.getItem("tokenflg");
-        // const url = "https://jinil.rf.gd/api/routes/setState.php";
-        const url = "http://localhost/api/routes/setState.php";
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": authtoken,
-                },
-                body: JSON.stringify({
-                    "id": wrkd['id'],
-                    "state": state,
-                })
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-                if (rwishes) {
-                    document.getElementById("update-btn").disabled = true;
-                    document.getElementById("prog-bar").style.width = `${state}%`;
-                } else {
-                    alert("Something Went Wrong!");
-                    console.log(json['response_desc']);
-                }
+        const url = "https://jinil.rf.gd/api/routes/setState.php";
+        // const url = "http://localhost/api/routes/setState.php";
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken,
+            },
+            body: JSON.stringify({
+                "id": wrkd['id'],
+                "state": state,
+            })
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
+            if (rwishes) {
+                document.getElementById("update-btn").disabled = true;
+                document.getElementById("prog-bar").style.width = `${state}%`;
             } else {
                 alert("Something Went Wrong!");
                 console.log(json['response_desc']);
             }
-        } catch (error) {
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
+            console.log(json['response_desc']);
         }
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
     }
 
     async function Complete() {
         const authtoken = localStorage.getItem("tokenflg");
-        // const url = "https://jinil.rf.gd/api/routes/setState.php";
-        const url = "http://localhost/api/routes/setState.php";
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": authtoken,
-                },
-                body: JSON.stringify({
-                    "id": wrkd['id'],
-                    "state": 100,
-                })
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-                if (rwishes) {
-                    document.getElementById("done-btn").disabled = true;
-                    document.getElementById("prog-bar").style.width = '100%';
-                } else {
-                    alert("Something Went Wrong!");
-                    console.log(json['response_desc']);
-                }
+        const url = "https://jinil.rf.gd/api/routes/setState.php";
+        // const url = "http://localhost/api/routes/setState.php";
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken,
+            },
+            body: JSON.stringify({
+                "id": wrkd['id'],
+                "state": 100,
+            })
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
+            if (rwishes) {
+                document.getElementById("done-btn").disabled = true;
+                document.getElementById("prog-bar").style.width = '100%';
             } else {
                 alert("Something Went Wrong!");
                 console.log(json['response_desc']);
             }
-        } catch (error) {
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
+            console.log(json['response_desc']);
         }
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
     }
 
     useEffect(() => {
         document.title = "JiniL | Work";
         getWork();
-
-        if (working === true) {
-            const bar = document.querySelector(".bar");
-            setTimeout(() => {
-                bar.style.setProperty("--progress", `${wrkd['stc']}%`);
-            }, 500);
-        }
-    }, [working, wrkd])
+    }, [working])
 
     return (
         <div className='container' id="work-main">

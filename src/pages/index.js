@@ -8,35 +8,35 @@ const Home = () => {
     const authtoken = localStorage.getItem("tokenflg");
 
     const fetchPosts = useCallback(async () => {
-        // const url = "https://jinil.rf.gd/api/routes/fetchWishes.php";
-        const url = "http://localhost/api/routes/fetchWishes.php";
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": authtoken
-                }
-            });
-            const json = await response.json();
-            if (json["response_code"] === 200) {
-                let rwishes = json["response_data"];
-                rwishes.reverse();
-                if (rwishes.length > 0) {
-                    setwishes(rwishes);
-                    setws(true);
-                } else {
-                    setws(false);
-                }
-            } else {
-                alert("Something Went Wrong!");
-                console.log(json['response_desc']);
+        const url = "https://jinil.rf.gd/api/routes/fetchWishes.php";
+        // const url = "http://localhost/api/routes/fetchWishes.php";
+        // try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token": authtoken
             }
-
-        } catch (error) {
+        });
+        const json = await response.json();
+        if (json["response_code"] === 200) {
+            let rwishes = json["response_data"];
+            rwishes.reverse();
+            if (rwishes.length > 0) {
+                setwishes(rwishes);
+                setws(true);
+            } else {
+                setws(false);
+            }
+        } else {
             alert("Something Went Wrong!");
-            console.log(error);
+            console.log(json['response_desc']);
         }
+
+        // } catch (error) {
+        //     alert("Something Went Wrong!");
+        //     console.log(error);
+        // }
     }, [authtoken])
 
     useEffect(() => {
