@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 
-const User = () => {
+const Help = () => {
     useEffect(() => {
         document.title = "JiniL | User";
     }, [])
 
     return (
-        <div>User</div>
+        <div>Help</div>
     )
 }
 
-export default User
+export default Help

@@ -43,13 +43,13 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/user">
+                    <NavLink to="/help">
                         <div className='nav-icon'>
                             <i className='bx bx-user icon'></i>
                             <i className='bx bxs-user activeIcon'></i>
                         </div>
                         <div className='nav-label'>
-                            <span>User</span>
+                            <span>Help</span>
                         </div>
                     </NavLink>
                 </li>

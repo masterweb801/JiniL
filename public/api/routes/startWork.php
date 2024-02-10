@@ -25,7 +25,7 @@ if (isset($_SERVER['HTTP_AUTH_TOKEN'])) {
                 $result = mysqli_fetch_assoc($data);
                 $sql2 = 'UPDATE `Orders` SET `status`="started" WHERE `id`=' . $id;
                 mysqli_query($conn, $sql2);
-                $sql3 = 'UPDATE `Employee` SET `nop`=`nop`+1, `status`="busy", `pid`=' . $id . ' WHERE `ec`="' . $ec . '"';
+                $sql3 = 'UPDATE `employee` SET `nop`=`nop`+1, `status`="busy", `stc`=15, `pid`=' . $id . ' WHERE `ec`="' . $ec . '"';
                 mysqli_query($conn, $sql3);
                 response(200, "Successful", true);
             } else {

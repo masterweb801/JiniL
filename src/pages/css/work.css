@@ -1,0 +1,285 @@
+#work-main {
+    background: linear-gradient(135deg, hsla(348, 67%, 88%, 1) 50%, hsla(211, 66%, 87%, 1) 100%, hsla(272, 26%, 72%, 1) 100%);
+}
+
+.upandown {
+    width: 90vw;
+    background-color: #b8bcf5;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 0 25px;
+    border: 2px solid #3b49df;
+}
+
+.upandown .review-msg {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #010faf;
+    font-family: monospace;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.upandown .state-in,
+.upandown .up-btn,
+.upandown .done-btn {
+    width: 33%;
+}
+
+.upandown .state-in input,
+.upandown .done-btn button,
+.upandown .up-btn button {
+    width: 90%;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+.upandown .state-in input {
+    border-radius: 5px;
+    background: #ffffff;
+    border: 2px solid rgb(104, 222, 226);
+    font-size: 16px;
+    height: 40px;
+    line-height: 24px;
+    padding: 7px 8px;
+    color: rgb(8, 9, 10);
+    box-shadow: none;
+
+}
+
+.upandown .state-in input:focus {
+    background-color: #fff;
+    border-color: #3b49df;
+    box-shadow: 1px 1px 0 #3b49df;
+}
+
+.button-77 {
+    align-items: center;
+    appearance: none;
+    background-clip: padding-box;
+    background-color: initial;
+    background-image: none;
+    border-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    flex-direction: row;
+    flex-shrink: 0;
+    font-family: Eina01, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    justify-content: center;
+    line-height: 16px;
+    margin: 0;
+    min-height: 64px;
+    outline: none;
+    overflow: visible;
+    padding: 19px 26px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: auto;
+    word-break: keep-all;
+    z-index: 0;
+}
+
+@media (min-width: 768px) {
+    .button-77 {
+        padding: 19px 32px;
+    }
+}
+
+.button-77:before,
+.button-77:after {
+    border-radius: 80px;
+}
+
+.button-77:before {
+    background-color: rgba(249, 58, 19, .32);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -2;
+}
+
+.button-77:after {
+    background-color: initial;
+    background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+    bottom: 4px;
+    content: "";
+    display: block;
+    left: 4px;
+    overflow: hidden;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    transition: all 100ms ease-out;
+    z-index: -1;
+}
+
+.button-77:hover:not(:disabled):after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition-timing-function: ease-in;
+}
+
+.button-77:active:not(:disabled) {
+    color: #ccc;
+}
+
+.button-77:active:not(:disabled):after {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+}
+
+.button-77:disabled {
+    cursor: default;
+    opacity: .24;
+}
+
+.button-72 {
+    align-items: center;
+    background-color: initial;
+    background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 8px 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    font-family: Quicksand, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 16px;
+    margin: 0;
+    padding: 18px 18px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px, rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px, rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+}
+
+.button-72:hover {
+    background-image: linear-gradient(#B384C9, #391F5B 50%);
+}
+
+@media (min-width: 768px) {
+    .button-72 {
+        font-size: 21px;
+        padding: 18px 34px;
+    }
+}
+
+@media (max-width: 873px) {
+
+    .upandown {
+        flex-direction: column;
+    }
+
+    .upandown .state-in,
+    .upandown .up-btn,
+    .upandown .done-btn {
+        width: 100%;
+        margin: 7px 0;
+    }
+}
+
+.work-error {
+    width: 100vw;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    text-align: center;
+    background-color: #777;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 20px;
+}
+
+.progress {
+    background-color: black;
+    --progress: 0%;
+    margin-top: 50px;
+    width: 90vw;
+    height: 7vh;
+    border: 1px solid #fff;
+    padding: 12px 10px;
+    box-shadow: 0 0 10px #aaa;
+    align-self: center;
+    margin: -5px 0 15px 0;
+}
+
+.progress .bar {
+    width: var(--progress);
+    height: 100%;
+    background: linear-gradient(gold, #c85, gold);
+    background-repeat: repeat;
+    box-shadow: 0 0 10px 0px orange;
+    animation:
+        shine 4s ease-in infinite,
+        end 1s ease-out 1 7s;
+    transition: width 3s ease 3s;
+}
+
+@property --progress {
+    syntax: "<length>";
+    initial-value: 0%;
+    inherits: true;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 50px;
+    }
+}
+
+@keyframes end {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px 0px orange;
+    }
+
+    50% {
+        box-shadow: 0 0 15px 5px orange;
+    }
+}

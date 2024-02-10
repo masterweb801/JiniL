@@ -4,10 +4,10 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/index";
 import Work from "./pages/work";
-import User from "./pages/user";
 import Settings from "./pages/settings";
 import Login from './pages/login';
 import Wish from './pages/wish';
+import Help from './pages/help';
 
 function App() {
   const [log, setlog] = useState(false);
@@ -26,7 +26,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/work" element={<Work />} />
-              <Route exact path="/user" element={<User />} />
+              <Route exact path="/help" element={<Help />} />
               <Route exact path="/settings" element={<Settings stlog={setlog} />} />
               <Route path="/offer/:id" element={<Wish />} />
             </Routes>
