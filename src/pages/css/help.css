@@ -1,0 +1,39 @@
+.help-main {
+    width: 100vw;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #2c3e50;
+    background: linear-gradient(to bottom, #2c3e50, #fd746c);
+}
+
+.help-main h1 {
+    color: #fff;
+    margin: 25px;
+}
+
+.help-main .profiles {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-error {
+    width: 100vw;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    text-align: center;
+    background-color: #8a7575;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}

@@ -8,8 +8,8 @@ const Work = () => {
 
     async function getWork() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "https://jinil.rf.gd/api/routes/getWork.php";
-        // const url = "http://localhost/api/routes/getWork.php";
+        // const url = "https://jinil.rf.gd/api/routes/getWork.php";
+        const url = "http://localhost/api/routes/getWork.php";
         // try {
         const response = await fetch(url, {
             method: "POST",
@@ -23,7 +23,7 @@ const Work = () => {
             let rwishes = json["response_data"];
 
             if (rwishes['stc']) {
-                if (rwishes['status'] == "done") {
+                if (rwishes['status'] === "done") {
                     setworking(false);
                 } else {
                     setworking(true);
@@ -48,8 +48,8 @@ const Work = () => {
 
     async function Update() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "https://jinil.rf.gd/api/routes/setState.php";
-        // const url = "http://localhost/api/routes/setState.php";
+        // const url = "https://jinil.rf.gd/api/routes/setState.php";
+        const url = "http://localhost/api/routes/setState.php";
         // try {
         const response = await fetch(url, {
             method: "POST",
@@ -84,8 +84,8 @@ const Work = () => {
 
     async function Complete() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "https://jinil.rf.gd/api/routes/setState.php";
-        // const url = "http://localhost/api/routes/setState.php";
+        // const url = "https://jinil.rf.gd/api/routes/setState.php";
+        const url = "http://localhost/api/routes/setState.php";
         // try {
         const response = await fetch(url, {
             method: "POST",
