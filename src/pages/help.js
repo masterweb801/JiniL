@@ -9,8 +9,8 @@ const Help = () => {
 
     const getHelp = async () => {
         const authtoken = localStorage.getItem("tokenflg");
-        // const url = "https://jinil.rf.gd/api/routes/fetchHelpers.php";
-        const url = "http://localhost/api/routes/fetchHelpers.php";
+        const url = "https://jinil.rf.gd/api/routes/fetchHelpers.php";
+        // const url = "http://localhost/api/routes/fetchHelpers.php";
         // try {
         const response = await fetch(url, {
             method: "POST",
@@ -40,7 +40,7 @@ const Help = () => {
     }
 
     useEffect(() => {
-        document.title = "JiniL | User";
+        document.title = "JiniL | Help";
         getHelp();
     }, [])
 

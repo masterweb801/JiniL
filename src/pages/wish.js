@@ -8,8 +8,8 @@ const Wish = () => {
     const [work, setwork] = useState(false);
 
     const getDetails = useCallback(async () => {
-        // const url = "https://jinil.rf.gd/api/routes/getDetails.php";
-        const url = "http://localhost/api/routes/getDetails.php";
+        const url = "https://jinil.rf.gd/api/routes/getDetails.php";
+        // const url = "http://localhost/api/routes/getDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {
@@ -36,8 +36,8 @@ const Wish = () => {
     }, [id])
 
     async function startWork() {
-        // const url = "https://jinil.rf.gd/api/routes/startWork.php";
-        const url = "http://localhost/api/routes/startWork.php";
+        const url = "https://jinil.rf.gd/api/routes/startWork.php";
+        // const url = "http://localhost/api/routes/startWork.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {
