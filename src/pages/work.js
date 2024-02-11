@@ -23,11 +23,15 @@ const Work = () => {
             let rwishes = json["response_data"];
 
             if (rwishes['stc']) {
-                setworking(true);
-                setwrkd(rwishes);
-                setTimeout(() => {
-                    document.getElementById("prog-bar").style.width = `${rwishes['stc']}%`;
-                }, 1000)
+                if (rwishes['status'] == "done") {
+                    setworking(false);
+                } else {
+                    setworking(true);
+                    setwrkd(rwishes);
+                    setTimeout(() => {
+                        document.getElementById("prog-bar").style.width = `${rwishes['stc']}%`;
+                    }, 1000)
+                }
             } else {
                 setworking(false);
             }
@@ -195,7 +199,7 @@ const Work = () => {
                     </div>
                 </>
                 : <div className='work-error'>
-                    You Are Not Working In Any Project!
+                    You Are Not Working On Any Project!
                 </div>
             }
         </div>
