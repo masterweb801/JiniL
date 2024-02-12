@@ -8,6 +8,7 @@ import Settings from "./pages/settings";
 import Login from './pages/login';
 import Wish from './pages/wish';
 import Help from './pages/help';
+import Change from './pages/settings/change';
 
 function App() {
   const [log, setlog] = useState(false);
@@ -27,7 +28,8 @@ function App() {
               <Route exact path="/" element={<Home />} />
               <Route exact path="/work" element={<Work />} />
               <Route exact path="/help" element={<Help />} />
-              <Route exact path="/settings" element={<Settings stlog={setlog} details={{ "name": "MD Mobashshirul Karim", "category": "Software Developer", "email": "masterweb801@gmail.com", "phone": "+8801973983783" }} />} />
+              <Route exact path="/settings" element={<Settings stlog={setlog} />} />
+              <Route path="/settings/:id" element={<Change />} />
               <Route path="/offer/:id" element={<Wish />} />
             </Routes>
           </main>
