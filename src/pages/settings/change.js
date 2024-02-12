@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import Image from '../../components/Image';
 import Email from '../../components/Email';
 import Phone from '../../components/Phone';
 import Password from '../../components/Password';
@@ -10,6 +11,7 @@ const Change = () => {
 
     return (
         <div className='change-main'>
+            {id === "cng-img" ? <Image /> : ""}
             {id === "cng-email" ? <Email /> : ""}
             {id === "cng-phone" ? <Phone /> : ""}
             {id === "cng-passwd" ? <Password /> : ""}

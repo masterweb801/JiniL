@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
-const Email = () => {
+const Image = () => {
     const [done, setDone] = useState(false);
-    const [email, setEmail] = useState("");
+    const [img, setImg] = useState("");
     const [password, setPassword] = useState("");
-
     const handleSubmit = async () => {
         // const url = "https://jinil.rf.gd/api/routes/changeDetails.php";
         const url = "http://localhost/api/routes/changeDetails.php";
@@ -17,7 +16,7 @@ const Email = () => {
                 "Content-Type": "application/json",
                 "auth-token": authtoken
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ img, password })
         });
         const json = await response.json();
         if (json["response_code"] === 200) {
@@ -38,8 +37,8 @@ const Email = () => {
             {done === true ?
                 <Navigate to="/settings" /> :
                 <>
-                    <h2>Change Email</h2>
-                    <input type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="New Email" autoComplete='true' required />
+                    <h2>Change Image</h2>
+                    <input type="email" value={img} onChange={(e) => { setImg(e.target.value) }} placeholder="New Image Link" required />
                     <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} placeholder="Current Password" minLength={8} required />
                     <button type='submit'>Submit</button>
                 </>
@@ -48,4 +47,4 @@ const Email = () => {
     )
 }
 
-export default Email
+export default Image

@@ -48,7 +48,10 @@ const Settings = (props) => {
         <div className='settings-main'>
             <div className='profile'>
                 <div className='main-profile'>
-                    <img src={img} alt='' />
+                    <div className='img-div'>
+                        <img src={img} alt='' />
+                        <NavLink to="/settings/cng-img">Change Image</NavLink>
+                    </div>
                     <div className='user-details'>
                         <div className='name'>
                             <h3>{user["name"]}</h3>
