@@ -2,19 +2,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 100vw;
     min-height: 88vh;
-    height: 100%;
+    height: auto;
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
 }
 
 .settings-main .profile {
+    background: #43cea2;
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 25px 30px;
     width: 100vw;
     gap: 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
 }
 
 .settings-main .profile img {
@@ -23,6 +29,13 @@
     border: 2px solid rgb(4, 113, 255);
     border-radius: 50%;
     object-fit: cover;
+}
+
+.main-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 .profile .user-details {
@@ -41,6 +54,11 @@
     margin-left: 20px;
 }
 
+.profile .user-details .email #email-link,
+.profile .user-details .phone #email-link {
+    color: #fff;
+}
+
 .profile .user-edit {
     display: flex;
     flex-direction: column;
@@ -54,6 +72,7 @@
     padding: 10px 15px;
     border-radius: 20px;
     cursor: pointer;
+    transition: ease 500ms;
 }
 
 .profile .user-edit li a {
@@ -64,20 +83,32 @@
     background-color: blue;
 }
 
+.profile .user-edit li:nth-child(1):hover {
+    background-color: rgb(0, 0, 129);
+}
+
 .profile .user-edit li:nth-child(2) {
-    background-color: blueviolet;
+    background-color: rgb(100, 30, 167);
+}
+
+.profile .user-edit li:nth-child(2):hover {
+    background-color: rgb(69, 2, 131);
 }
 
 .profile .user-edit li:nth-child(3) {
     background-color: orangered;
 }
 
+.profile .user-edit li:nth-child(3):hover {
+    background-color: rgb(218, 44, 0);
+}
+
 .others {
     width: 100vw;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 25px;
 }
 
 .button-82-pushable {
@@ -173,8 +204,38 @@
     outline: none;
 }
 
-/* @media (max-width: 710px) {
-    .profile {
-        display: flex;
+@media (max-width: 710px) {
+    .settings-main .profile {
+        flex-direction: column;
+        border-bottom: none;
+        padding-bottom: 10px;
     }
-} */
+
+    .main-profile {
+        flex-wrap: wrap;
+    }
+
+    .profile .user-edit {
+        width: 100vw;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .settings-main .profile img {
+        height: 150px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 300px) {
+    .profile .user-details {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 10px;
+    }
+}

@@ -16,19 +16,21 @@ const Settings = (props) => {
     return (
         <div className='settings-main'>
             <div className='profile'>
-                <img src={photo} alt='' />
-                <div className='user-details'>
-                    <div className='name'>
-                        <h3>{props.details["name"]}</h3>
-                    </div>
-                    <div className='subtitle'>
-                        {props.details["category"] === "*" ? "" : props.details["category"]}
-                    </div>
-                    <div className='email'>
-                        <u>Email:-</u><a id='email-link' rel="noreferrer" href={`mailto:${props.details["email"]}`}>{props.details["email"]}</a>
-                    </div>
-                    <div className='phone'>
-                        <u>Phone:-</u><a id='email-link' rel="noreferrer" href={`tel:${props.details["phone"]}`}>{props.details["phone"]}</a>
+                <div className='main-profile'>
+                    <img src={photo} alt='' />
+                    <div className='user-details'>
+                        <div className='name'>
+                            <h3>{props.details["name"]}</h3>
+                        </div>
+                        <div className='subtitle'>
+                            {props.details["category"] === "*" ? "" : props.details["category"]}
+                        </div>
+                        <div className='email'>
+                            <u>Email:-</u><a id='email-link' rel="noreferrer" href={`mailto:${props.details["email"]}`}>{props.details["email"]}</a>
+                        </div>
+                        <div className='phone'>
+                            <u>Phone:-</u><a id='email-link' rel="noreferrer" href={`tel:${props.details["phone"]}`}>{props.details["phone"]}</a>
+                        </div>
                     </div>
                 </div>
                 <ul className='user-edit'>
