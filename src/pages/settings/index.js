@@ -13,8 +13,8 @@ const Settings = (props) => {
     }
 
     async function getUser() {
-        // const url = "https://jinil.rf.gd/api/routes/getUser.php";
-        const url = "http://localhost/api/routes/getUser.php";
+        const url = "https://jinil.rf.gd/api/routes/getUser.php";
+        // const url = "http://localhost/api/routes/getUser.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {

@@ -6,9 +6,10 @@ const Email = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = async () => {
-        // const url = "https://jinil.rf.gd/api/routes/changeDetails.php";
-        const url = "http://localhost/api/routes/changeDetails.php";
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const url = "https://jinil.rf.gd/api/routes/changeDetails.php";
+        // const url = "http://localhost/api/routes/changeDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {

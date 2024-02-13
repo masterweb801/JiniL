@@ -5,9 +5,11 @@ const Image = () => {
     const [done, setDone] = useState(false);
     const [img, setImg] = useState("");
     const [password, setPassword] = useState("");
-    const handleSubmit = async () => {
-        // const url = "https://jinil.rf.gd/api/routes/changeDetails.php";
-        const url = "http://localhost/api/routes/changeDetails.php";
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const url = "https://jinil.rf.gd/api/routes/changeDetails.php";
+        // const url = "http://localhost/api/routes/changeDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {
@@ -38,7 +40,7 @@ const Image = () => {
                 <Navigate to="/settings" /> :
                 <>
                     <h2>Change Image</h2>
-                    <input type="email" value={img} onChange={(e) => { setImg(e.target.value) }} placeholder="New Image Link" required />
+                    <input type="text" value={img} onChange={(e) => { setImg(e.target.value) }} placeholder="New Image Link" required />
                     <input type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} placeholder="Current Password" minLength={8} required />
                     <button type='submit'>Submit</button>
                 </>

@@ -71,3 +71,7 @@
 .change-main form button:hover {
     background-color: #2c974b;
 }
+
+.PhoneInput {
+    width: 100%;
+}
