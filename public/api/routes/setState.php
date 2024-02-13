@@ -24,7 +24,7 @@ if (isset($_SERVER['HTTP_AUTH_TOKEN'])) {
 
             if ($total > 0) {
                 if ($state == 100) {
-                    $sql2 = 'UPDATE `Orders` SET `status`="finalizing", `stc`=' . $state . ' WHERE `id`=' . $id;
+                    $sql2 = 'UPDATE `Orders` SET `status`="checking", `stc`=' . $state . ' WHERE `id`=' . $id;
                     mysqli_query($conn, $sql2);
                     response(200, "Successfull", true);
                 } else {

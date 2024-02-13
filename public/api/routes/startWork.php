@@ -22,16 +22,12 @@ if (isset($_SERVER['HTTP_AUTH_TOKEN'])) {
             $total = mysqli_num_rows($data);
 
             if ($total > 0) {
-                try {
-                    $result = mysqli_fetch_assoc($data);
-                    $sql2 = 'UPDATE `Orders` SET `status`="started", `stc`=15 WHERE `id`=' . $id;
-                    mysqli_query($conn, $sql2);
-                    $sql3 = 'UPDATE `Employee` SET `nop`=`nop`+1, `status`="busy", `pid`=' . $id . ' WHERE `ec`="' . $ec . '"';
-                    mysqli_query($conn, $sql3);
-                    response(200, "Successful", true);
-                } catch (Exception $e) {
-                    response(500, $e->getMessage(), $e->getMessage());
-                }
+                $result = mysqli_fetch_assoc($data);
+                $sql2 = 'UPDATE `Orders` SET `status`="started" WHERE `id`=' . $id;
+                mysqli_query($conn, $sql2);
+                $sql3 = 'UPDATE `Employee` SET `nop`=`nop`+1, `status`="busy", `stc`=15, `pid`=' . $id . ' WHERE `ec`="' . $ec . '"';
+                mysqli_query($conn, $sql3);
+                response(200, "Successful", true);
             } else {
                 response(400, "Invalid User", null);
             }
