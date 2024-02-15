@@ -8,7 +8,7 @@ const Work = () => {
 
     async function getWork() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "https://jinil.rf.gd/api/routes/getWork.php";
+        const url = "/api/routes/getWork.php";
         // const url = "http://localhost/api/routes/getWork.php";
         // try {
         const response = await fetch(url, {
@@ -48,7 +48,7 @@ const Work = () => {
 
     async function Update() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "https://jinil.rf.gd/api/routes/setState.php";
+        const url = "/api/routes/setState.php";
         // const url = "http://localhost/api/routes/setState.php";
         // try {
         const response = await fetch(url, {
@@ -84,7 +84,7 @@ const Work = () => {
 
     async function Complete() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "https://jinil.rf.gd/api/routes/setState.php";
+        const url = "/api/routes/setState.php";
         // const url = "http://localhost/api/routes/setState.php";
         // try {
         const response = await fetch(url, {

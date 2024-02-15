@@ -1,22 +1,39 @@
 import React, { useEffect } from 'react'
 import "./index.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-    useEffect(() => {
-        const navBar = document.querySelector(".navbar")
+    let location = useLocation();
+
+    function changeIndicator(index) {
+        const navBar = document.querySelector(".navbar");
         const allLi = navBar.querySelectorAll("li");
-
-        allLi.forEach((li, index) => {
-            li.addEventListener("click", () => {
-                navBar.querySelector(".active").classList.remove("active");
+        allLi.forEach((li, ind) => {
+            if (ind === index) {
                 li.classList.add("active");
-
-                const indicator = navBar.querySelector(".indicator");
-                indicator.style.left = `${(index * 25) + 12.5}vw`;
-            });
+            } else {
+                li.classList.remove("active");
+            }
         });
-    }, []);
+        const indicator = navBar.querySelector(".indicator");
+        indicator.style.left = `${(index * 25) + 12.5}vw`;
+    };
+
+    useEffect(() => {
+        const listLoc = {
+            "/": 0,
+            "/work": 1,
+            "/help": 2,
+            "/settings": 3,
+            "/settings/cng-email": 3,
+            "/settings/cng-phone": 3,
+            "/settings/cng-passwd": 3,
+            "/settings/cng-img": 3,
+        };
+        if (listLoc[location.pathname]) {
+            changeIndicator(listLoc[location.pathname]);
+        }
+    }, [location]);
     return (
         <div className="navbar">
             <ul>

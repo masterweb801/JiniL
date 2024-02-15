@@ -10,7 +10,7 @@ const Password = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (passwordNew === passwordNewC) {
-            const url = "https://jinil.rf.gd/api/routes/changeDetails.php";
+            const url = "/api/routes/changeDetails.php";
             // const url = "http://localhost/api/routes/changeDetails.php";
             const authtoken = localStorage.getItem("tokenflg");
             // try {
