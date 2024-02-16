@@ -3,8 +3,7 @@ import { Navigate } from 'react-router-dom'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 
-// const api = process.env.REACT_APP_API
-const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Phone = () => {
     const [done, setDone] = useState(false);

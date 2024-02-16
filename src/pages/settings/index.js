@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import photo from "../img/profile.jpg"
 import "../css/settings.css"
 
-// const api = process.env.REACT_APP_API
-const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Settings = (props) => {
     const [user, setUser] = useState([]);

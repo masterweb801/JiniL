@@ -2,8 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import "./css/wish.css"
 
-// const api = process.env.REACT_APP_API
-const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Wish = () => {
     let { id } = useParams();

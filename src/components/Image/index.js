@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
-// const api = process.env.REACT_APP_API
-const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Image = () => {
     const [done, setDone] = useState(false);

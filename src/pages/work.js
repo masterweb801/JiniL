@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./css/work.css"
 
-const api = process.env.REACT_APP_API
-// const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Work = () => {
     const [working, setworking] = useState(false);

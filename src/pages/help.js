@@ -3,8 +3,7 @@ import Profile from '../components/Profile';
 import photo from "./img/profile.jpg";
 import "./css/help.css";
 
-// const api = process.env.REACT_APP_API
-const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Help = () => {
     const [workers, setWorkers] = useState([]);

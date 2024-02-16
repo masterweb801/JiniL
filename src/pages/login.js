@@ -4,8 +4,7 @@ import "./css/login.css";
 import "./css/util.css";
 import image from "./img/login.png";
 
-// const api = process.env.REACT_APP_API
-const api = ""
+const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
