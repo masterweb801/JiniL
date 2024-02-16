@@ -3,8 +3,7 @@ import { Navigate } from "react-router-dom";
 import "./css/login.css";
 import "./css/util.css";
 import image from "./img/login.png";
-
-const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
+import api from "../server/api"
 
 const Login = (props) => {
     const [email, setEmail] = useState("");

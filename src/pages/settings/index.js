@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import photo from "../img/profile.jpg"
 import "../css/settings.css"
-
-const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
+import api from "../../server/api"
 
 const Settings = (props) => {
     const [user, setUser] = useState([]);

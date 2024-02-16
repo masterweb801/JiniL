@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import Offer from '../components/Offer'
 import "./css/index.css"
-
-const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
+import api from "../server/api"
 
 const Home = () => {
     const [wishes, setwishes] = useState([]);

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Profile from '../components/Profile';
 import photo from "./img/profile.jpg";
 import "./css/help.css";
-
-const api = process.env.NODE_ENV === 'production' ? '' : process.env.REACT_APP_API;
+import api from "../server/api"
 
 const Help = () => {
     const [workers, setWorkers] = useState([]);
