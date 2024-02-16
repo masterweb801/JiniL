@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Image = () => {
     const [done, setDone] = useState(false);
     const [img, setImg] = useState("");
@@ -8,8 +11,7 @@ const Image = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = "/api/routes/changeDetails.php";
-        // const url = "http://localhost/api/routes/changeDetails.php";
+        const url = api + "/api/routes/changeDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {

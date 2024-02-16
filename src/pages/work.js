@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import "./css/work.css"
 
+const api = process.env.REACT_APP_API
+// const api = ""
+
 const Work = () => {
     const [working, setworking] = useState(false);
     const [wrkd, setwrkd] = useState([]);
@@ -8,8 +11,7 @@ const Work = () => {
 
     async function getWork() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "/api/routes/getWork.php";
-        // const url = "http://localhost/api/routes/getWork.php";
+        const url = api + "/api/routes/getWork.php";
         // try {
         const response = await fetch(url, {
             method: "POST",
@@ -48,8 +50,7 @@ const Work = () => {
 
     async function Update() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "/api/routes/setState.php";
-        // const url = "http://localhost/api/routes/setState.php";
+        const url = api + "/api/routes/setState.php";
         // try {
         const response = await fetch(url, {
             method: "POST",
@@ -84,8 +85,7 @@ const Work = () => {
 
     async function Complete() {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "/api/routes/setState.php";
-        // const url = "http://localhost/api/routes/setState.php";
+        const url = api + "/api/routes/setState.php";
         // try {
         const response = await fetch(url, {
             method: "POST",

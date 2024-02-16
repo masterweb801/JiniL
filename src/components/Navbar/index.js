@@ -30,7 +30,7 @@ const Navbar = () => {
             "/settings/cng-passwd": 3,
             "/settings/cng-img": 3,
         };
-        if (listLoc[location.pathname]) {
+        if (listLoc[location.pathname] !== undefined) {
             changeIndicator(listLoc[location.pathname]);
         }
     }, [location]);

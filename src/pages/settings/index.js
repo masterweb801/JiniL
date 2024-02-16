@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import photo from "../img/profile.jpg"
 import "../css/settings.css"
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Settings = (props) => {
     const [user, setUser] = useState([]);
     const [img, setImg] = useState(photo)
@@ -13,8 +16,7 @@ const Settings = (props) => {
     }
 
     async function getUser() {
-        const url = "/api/routes/getUser.php";
-        // const url = "http://localhost/api/routes/getUser.php";
+        const url = api + "/api/routes/getUser.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {

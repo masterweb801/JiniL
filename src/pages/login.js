@@ -4,14 +4,16 @@ import "./css/login.css";
 import "./css/util.css";
 import image from "./img/login.png";
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     async function handleLoginClick(event) {
         event.preventDefault();
-        const url = "/api/routes/login.php";
-        // const url = "http://localhost/api/routes/login.php";
+        const url = api + "/api/routes/login.php";
         // try {
         const response = await fetch(url, {
             method: "POST",

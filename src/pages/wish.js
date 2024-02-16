@@ -2,14 +2,16 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import "./css/wish.css"
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Wish = () => {
     let { id } = useParams();
     const [details, setdetails] = useState([]);
     const [work, setwork] = useState(false);
 
     const getDetails = useCallback(async () => {
-        const url = "/api/routes/getDetails.php";
-        // const url = "http://localhost/api/routes/getDetails.php";
+        const url = api + "/api/routes/getDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {
@@ -36,8 +38,7 @@ const Wish = () => {
     }, [id])
 
     async function startWork() {
-        const url = "/api/routes/startWork.php";
-        // const url = "http://localhost/api/routes/startWork.php";
+        const url = api + "/api/routes/startWork.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {

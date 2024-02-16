@@ -2,14 +2,16 @@ import React, { useEffect, useState, useCallback } from 'react'
 import Offer from '../components/Offer'
 import "./css/index.css"
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Home = () => {
     const [wishes, setwishes] = useState([]);
     const [ws, setws] = useState(false);
     const authtoken = localStorage.getItem("tokenflg");
 
     const fetchPosts = useCallback(async () => {
-        const url = "/api/routes/fetchWishes.php";
-        // const url = "http://localhost/api/routes/fetchWishes.php";
+        const url = api + "/api/routes/fetchWishes.php";
         // try {
         const response = await fetch(url, {
             method: "POST",

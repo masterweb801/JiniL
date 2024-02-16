@@ -3,14 +3,16 @@ import Profile from '../components/Profile';
 import photo from "./img/profile.jpg";
 import "./css/help.css";
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Help = () => {
     const [workers, setWorkers] = useState([]);
     const [wrks, setwrks] = useState(false);
 
     const getHelp = async () => {
         const authtoken = localStorage.getItem("tokenflg");
-        const url = "/api/routes/fetchHelpers.php";
-        // const url = "http://localhost/api/routes/fetchHelpers.php";
+        const url = api + "/api/routes/fetchHelpers.php";
         // try {
         const response = await fetch(url, {
             method: "POST",

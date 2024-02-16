@@ -3,6 +3,9 @@ import { Navigate } from 'react-router-dom'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 
+// const api = process.env.REACT_APP_API
+const api = ""
+
 const Phone = () => {
     const [done, setDone] = useState(false);
     const [phone, setPhone] = useState("");
@@ -10,8 +13,7 @@ const Phone = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = "/api/routes/changeDetails.php";
-        // const url = "http://localhost/api/routes/changeDetails.php";
+        const url = api + "/api/routes/changeDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
         // try {
         const response = await fetch(url, {
