@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import api from "../server/api"
+import api from "../../server/api"
 
 const Image = () => {
     const [done, setDone] = useState(false);

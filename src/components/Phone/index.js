@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
-import api from "../server/api"
+import api from "../../server/api"
 
 const Phone = () => {
     const [done, setDone] = useState(false);

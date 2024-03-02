@@ -11,29 +11,35 @@ const Wish = () => {
     const getDetails = useCallback(async () => {
         const url = api + "/api/routes/getDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken
-            },
-            body: JSON.stringify({ id })
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            setdetails(rwishes);
-        } else {
-            alert("Something Went Wrong!");
-            console.log(json['response_desc']);
-        }
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
 
-    }, [id])
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                },
+                body: JSON.stringify({ id })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const json = await response.json();
+
+            if (json && json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                setdetails(rwishes);
+            } else {
+                alert("Something Went Wrong!");
+                console.log(json['response_desc']);
+            }
+        } catch (error) {
+            alert("Something Went Wrong!");
+            console.error('Error:', error);
+        }
+    }, [id]);
 
     async function startWork() {
         const url = api + "/api/routes/startWork.php";

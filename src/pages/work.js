@@ -18,7 +18,9 @@ const Work = () => {
                 "auth-token": authtoken
             }
         });
-        const json = await response.json();
+        const responseData = await response.text();
+        console.log("Response from server:", responseData);
+        const json = JSON.parse(responseData);
         if (json["response_code"] === 200) {
             let rwishes = json["response_data"];
 
