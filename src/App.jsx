@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App.css"
 import Navbar from "./components/Navbar";
 import Home from "./pages/index";
 import Work from "./pages/work";
@@ -40,7 +40,7 @@ function App() {
         <Login stlog={setlog} log={log} />
       }
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
