@@ -12,27 +12,27 @@ const Login = (props) => {
     async function handleLoginClick(event) {
         event.preventDefault();
         const url = api + "/api/routes/login.php";
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password })
-        });
-        const json = await response.json();
-        if (json['response_code'] === 200) {
-            localStorage.setItem('tokenflg', json['response_data'])
-            props.stlog(true);
-        } else {
-            alert("Invalid Credentials")
-        }
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password })
+            });
+            const json = await response.json();
+            if (json['response_code'] === 200) {
+                localStorage.setItem('tokenflg', json['response_data'])
+                props.stlog(true);
+            } else {
+                alert("Invalid Credentials")
+            }
 
-        setEmail("");
-        setPassword("");
-        // } catch (error) {
-        //     console.log(error);
-        // }
+            setEmail("");
+            setPassword("");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {

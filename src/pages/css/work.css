@@ -2,6 +2,11 @@
     background: linear-gradient(135deg, hsla(348, 67%, 88%, 1) 50%, hsla(211, 66%, 87%, 1) 100%, hsla(272, 26%, 72%, 1) 100%);
 }
 
+#work-main h1 {
+    text-align: center;
+    margin: 0 7px;
+}
+
 .upandown {
     width: 90vw;
     background-color: #b8bcf5;

@@ -10,112 +10,111 @@ const Work = () => {
     async function getWork() {
         const authtoken = localStorage.getItem("tokenflg");
         const url = api + "/api/routes/getWork.php";
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken
-            }
-        });
-        const responseData = await response.text();
-        console.log("Response from server:", responseData);
-        const json = JSON.parse(responseData);
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                }
+            });
+            const responseData = await response.text();
+            const json = JSON.parse(responseData);
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
 
-            if (rwishes['stc']) {
-                if (rwishes['status'] === "done") {
-                    setworking(false);
+                if (rwishes['stc']) {
+                    if (rwishes['status'] === "done") {
+                        setworking(false);
+                    } else {
+                        setworking(true);
+                        setwrkd(rwishes);
+                        setTimeout(() => {
+                            document.getElementById("prog-bar").style.width = `${rwishes['stc']}%`;
+                        }, 1000)
+                    }
                 } else {
-                    setworking(true);
-                    setwrkd(rwishes);
-                    setTimeout(() => {
-                        document.getElementById("prog-bar").style.width = `${rwishes['stc']}%`;
-                    }, 1000)
+                    setworking(false);
                 }
             } else {
-                setworking(false);
+                alert("Something Went Wrong!");
+                console.log(json['response_desc']);
             }
-        } else {
-            alert("Something Went Wrong!");
-            console.log(json['response_desc']);
-        }
 
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
+        } catch (error) {
+            alert("Something Went Wrong!");
+            console.log(error);
+        }
     }
 
     async function Update() {
         const authtoken = localStorage.getItem("tokenflg");
         const url = api + "/api/routes/setState.php";
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken,
-            },
-            body: JSON.stringify({
-                "id": wrkd['id'],
-                "state": state,
-            })
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            if (rwishes) {
-                document.getElementById("update-btn").disabled = true;
-                document.getElementById("prog-bar").style.width = `${state}%`;
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken,
+                },
+                body: JSON.stringify({
+                    "id": wrkd['id'],
+                    "state": state,
+                })
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                if (rwishes) {
+                    document.getElementById("update-btn").disabled = true;
+                    document.getElementById("prog-bar").style.width = `${state}%`;
+                } else {
+                    alert("Something Went Wrong!");
+                    console.log(json['response_desc']);
+                }
             } else {
                 alert("Something Went Wrong!");
                 console.log(json['response_desc']);
             }
-        } else {
+        } catch (error) {
             alert("Something Went Wrong!");
-            console.log(json['response_desc']);
+            console.log(error);
         }
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
     }
 
     async function Complete() {
         const authtoken = localStorage.getItem("tokenflg");
         const url = api + "/api/routes/setState.php";
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken,
-            },
-            body: JSON.stringify({
-                "id": wrkd['id'],
-                "state": 100,
-            })
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            if (rwishes) {
-                document.getElementById("done-btn").disabled = true;
-                document.getElementById("prog-bar").style.width = '100%';
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken,
+                },
+                body: JSON.stringify({
+                    "id": wrkd['id'],
+                    "state": 100,
+                })
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                if (rwishes) {
+                    document.getElementById("done-btn").disabled = true;
+                    document.getElementById("prog-bar").style.width = '100%';
+                } else {
+                    alert("Something Went Wrong!");
+                    console.log(json['response_desc']);
+                }
             } else {
                 alert("Something Went Wrong!");
                 console.log(json['response_desc']);
             }
-        } else {
+        } catch (error) {
             alert("Something Went Wrong!");
-            console.log(json['response_desc']);
+            console.log(error);
         }
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
     }
 
     useEffect(() => {
