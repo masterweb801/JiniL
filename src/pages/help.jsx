@@ -11,32 +11,32 @@ const Help = () => {
     const getHelp = async () => {
         const authtoken = localStorage.getItem("tokenflg");
         const url = api + "/api/routes/fetchHelpers.php";
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken
-            }
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            if (rwishes.length > 0) {
-                setWorkers(rwishes);
-                setwrks(true);
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                }
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                if (rwishes.length > 0) {
+                    setWorkers(rwishes);
+                    setwrks(true);
+                } else {
+                    setwrks(false);
+                }
             } else {
-                setwrks(false);
+                alert("Something Went Wrong!");
+                console.log(json['response_desc']);
             }
-        } else {
-            alert("Something Went Wrong!");
-            console.log(json['response_desc']);
-        }
 
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
+        } catch (error) {
+            alert("Something Went Wrong!");
+            console.log(error);
+        }
     }
 
     useEffect(() => {

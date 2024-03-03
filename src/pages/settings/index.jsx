@@ -16,27 +16,27 @@ const Settings = (props) => {
     async function getUser() {
         const url = api + "/api/routes/getUser.php";
         const authtoken = localStorage.getItem("tokenflg");
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken
-            },
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            setUser(rwishes);
-            setImg(rwishes['img'])
-        } else {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                },
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                setUser(rwishes);
+                setImg(rwishes['img'])
+            } else {
+                alert("Something Went Wrong!");
+                console.log(json['response_desc']);
+            }
+        } catch (error) {
             alert("Something Went Wrong!");
-            console.log(json['response_desc']);
+            console.log(error);
         }
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
     }
 
     useEffect(() => {

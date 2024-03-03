@@ -13,6 +13,8 @@
 .container h1 {
     color: #fff;
     padding-bottom: 25px;
+    text-align: center;
+    margin: 0 7px;
 }
 
 .container .main {

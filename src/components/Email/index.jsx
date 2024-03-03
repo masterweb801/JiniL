@@ -11,27 +11,27 @@ const Email = () => {
         e.preventDefault();
         const url = api + "/api/routes/changeDetails.php";
         const authtoken = localStorage.getItem("tokenflg");
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken
-            },
-            body: JSON.stringify({ email, password })
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            setDone(rwishes);
-        } else {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                },
+                body: JSON.stringify({ email, password })
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                setDone(rwishes);
+            } else {
+                alert("Something Went Wrong!");
+                console.log(json["response_desc"]);
+            }
+        } catch (error) {
             alert("Something Went Wrong!");
-            console.log(json["response_desc"]);
+            console.log(error);
         }
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
     }
 
     return (

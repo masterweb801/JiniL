@@ -44,27 +44,27 @@ const Wish = () => {
     async function startWork() {
         const url = api + "/api/routes/startWork.php";
         const authtoken = localStorage.getItem("tokenflg");
-        // try {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "auth-token": authtoken
-            },
-            body: JSON.stringify({ id })
-        });
-        const json = await response.json();
-        if (json["response_code"] === 200) {
-            let rwishes = json["response_data"];
-            setwork(rwishes);
-        } else {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": authtoken
+                },
+                body: JSON.stringify({ id })
+            });
+            const json = await response.json();
+            if (json["response_code"] === 200) {
+                let rwishes = json["response_data"];
+                setwork(rwishes);
+            } else {
+                alert("Something Went Wrong!");
+                console.log(json["response_desc"]);
+            }
+        } catch (error) {
             alert("Something Went Wrong!");
-            console.log(json["response_desc"]);
+            console.log(error);
         }
-        // } catch (error) {
-        //     alert("Something Went Wrong!");
-        //     console.log(error);
-        // }
     }
 
     useEffect(() => {
